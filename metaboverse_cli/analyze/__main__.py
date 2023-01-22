@@ -50,13 +50,13 @@ try:
 except:
     import importlib.util
     spec = importlib.util.spec_from_file_location(
-        "", os.path.abspath("./metaboverse_cli/analyze/prepare_data.py"))
+        "", "../metaboverse_cli/analyze/prepare_data.py"))
     prepare_data = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(prepare_data)
     prepare_data = prepare_data.__main__
 
     spec = importlib.util.spec_from_file_location(
-        "", os.path.abspath("./metaboverse_cli/analyze/model.py"))
+        "","../metaboverse_cli/analyze/model.py"))
     model = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(model)
     __template__ = model.__template__
@@ -64,16 +64,14 @@ except:
     load_references = model.load_references
     load_metabolite_synonym_dictionary = model.load_metabolite_synonym_dictionary
 
-    module_path = os.path.abspath(
-        os.path.join(".", "metaboverse_cli", "analyze", "utils.py"
-                     ))
+    module_path = os.path.join("..", "metaboverse_cli", "analyze", "utils.py"   )
     spec = importlib.util.spec_from_file_location("", module_path)
     analyze_utils = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(analyze_utils)
     remove_defective_reactions = analyze_utils.remove_defective_reactions
 
     spec = importlib.util.spec_from_file_location(
-        "", os.path.abspath("./metaboverse_cli/utils.py"))
+        "","../metaboverse_cli/utils.py"))
     utils = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(utils)
     progress_feed = utils.progress_feed

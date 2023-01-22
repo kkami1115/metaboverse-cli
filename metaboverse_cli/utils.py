@@ -39,7 +39,7 @@ try:
 except:
     import importlib.util
     spec = importlib.util.spec_from_file_location(
-        "__version__", os.path.abspath("./metaboverse_cli/__init__.py"))
+        "__version__", "../metaboverse_cli/__init__.py")
     init = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(init)
     __version__ = init.__version__

@@ -38,45 +38,44 @@ import os
 """Curation/Utils
 """
 spec = importlib.util.spec_from_file_location(
-    "__main__", os.path.abspath("./metaboverse_cli/curate/__main__.py"))
+    "__main__", "../metaboverse_cli/curate/__main__.py")
 curate = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(curate)
 
 spec = importlib.util.spec_from_file_location(
-    "__main__", os.path.abspath("./metaboverse_cli/curate/load_reactions_db.py"))
+    "__main__", "../metaboverse_cli/curate/load_reactions_db.py")
 load_reactions = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(load_reactions)
 
 spec = importlib.util.spec_from_file_location(
-    "__main__", os.path.abspath("./metaboverse_cli/curate/load_complexes_db.py"))
+    "__main__", "../metaboverse_cli/curate/load_complexes_db.py")
 load_complexes = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(load_complexes)
 
 spec = importlib.util.spec_from_file_location(
-    "__main__", os.path.abspath("./metaboverse_cli/curate/fetch_species.py"))
+    "__main__", "../metaboverse_cli/curate/fetch_species.py")
 fetch_species = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(fetch_species)
 
 spec = importlib.util.spec_from_file_location(
-    "get_table", os.path.abspath("./metaboverse_cli/curate/utils.py"))
+    "get_table", "../metaboverse_cli/curate/utils.py")
 get_table = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(get_table)
 
 spec = importlib.util.spec_from_file_location(
-    "unpack_table", os.path.abspath("./metaboverse_cli/curate/utils.py"))
+    "unpack_table", "../metaboverse_cli/curate/utils.py")
 unpack_table = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(unpack_table)
 
 spec = importlib.util.spec_from_file_location(
-    "", os.path.abspath("./metaboverse_cli/curate/load_reactions_db.py"))
+    "", "../metaboverse_cli/curate/load_reactions_db.py")
 load_reactions_db = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(load_reactions_db)
 
 # test __main__() -- functional test
 args_dict = {
     'organism_id': 'SCE',
-    'output': os.path.abspath(
-        os.path.join(".", "metaboverse_cli", "curate", "test")) + os.path.sep}
+    'output': os.path.join("..", "metaboverse_cli", "curate", "test") + os.path.sep}
 
 # load_reactions_db.py
 args_dict, pathway_database, reaction_database, species_database, \
@@ -126,8 +125,7 @@ assert type(organisms) == list, "fetch_species.py failed"
 
 # write_database()
 args_dict = {
-    'output': os.path.abspath(
-        os.path.join(".", "metaboverse_cli", "curate", "test")) + os.path.sep,
+    'output': os.path.join("..", "metaboverse_cli", "curate", "test") + os.path.sep,
     'file': 'test.mvdb'}
 database = {
     'chebi_reference': {
@@ -354,17 +352,16 @@ assert set([
     'P06821']).issubset(set(components_database['species_195941']['hasPart'])), 'process_components() failed'
 
 # BioModels tests
-src = os.path.abspath(os.path.join(".", "metaboverse_cli",
-                                   "curate", "test", "test_session_data.json"))
-dst = os.path.abspath(os.path.join(".", "metaboverse_cli",
-                                   "curate", "test", "test_session_data_copy.json"))
+src = os.path.join("..", "metaboverse_cli",
+                                   "curate", "test", "test_session_data.json")
+dst = os.path.join("..", "metaboverse_cli",
+                                   "curate", "test", "test_session_data_copy.json")
 s_out = copyfile(src, dst)
 
 args_dict = {
     'organism_id': 'find',
-    'output': os.path.abspath(
-        os.path.join(".", "metaboverse_cli", "curate", "test")) + os.path.sep,
-    'session_data': os.path.abspath(os.path.join(".", "metaboverse_cli", "curate", "test", "test_session_data_copy.json"))}
+    'output': os.path.join("..", "metaboverse_cli", "curate", "test") + os.path.sep,
+    'session_data': os.path.join("..", "metaboverse_cli", "curate", "test", "test_session_data_copy.json")}
 
 args_dict, pathway_database, reaction_database, species_database, \
 name_database, compartment_dictionary, \
@@ -372,8 +369,7 @@ components_database = load_reactions.__main__(
     species_id=args_dict['organism_id'],
     output_dir=args_dict['output'],
     database_source='biomodels/bigg',
-    sbml_url=os.path.abspath(os.path.join(
-        ".", "metaboverse_cli", "curate", "test", "iIS312.xml")),
+    sbml_url=os.path.join("..", "metaboverse_cli", "curate", "test", "iIS312.xml"),
     args_dict=args_dict)
 
 if 'All' in pathway_database:
@@ -392,18 +388,17 @@ os.remove(dst)
 
 
 # BiGG tests
-src = os.path.abspath(os.path.join(".", "metaboverse_cli",
-                                   "curate", "test", "test_session_data.json"))
-dst = os.path.abspath(os.path.join(".", "metaboverse_cli",
-                                   "curate", "test", "test_session_data_copy.json"))
+src = os.path.join("..", "metaboverse_cli",
+                                   "curate", "test", "test_session_data.json")
+dst = os.path.join("..", "metaboverse_cli",
+                                   "curate", "test", "test_session_data_copy.json")
 s_out = copyfile(src, dst)
 
 args_dict = {
     'organism_id': 'find',
     'database_source': 'biomodels/bigg',
-    'output': os.path.abspath(
-        os.path.join(".", "metaboverse_cli", "curate", "test")) + os.path.sep,
-    'session_data': os.path.abspath(os.path.join(".", "metaboverse_cli", "curate", "test", "test_session_data_copy.json"))}
+    'output': os.path.join("..", "metaboverse_cli", "curate", "test") + os.path.sep,
+    'session_data': os.path.join("..", "metaboverse_cli", "curate", "test", "test_session_data_copy.json")}
 
 args_dict, pathway_database, reaction_database, species_database, \
 name_database, compartment_dictionary, \
@@ -411,8 +406,7 @@ components_database = load_reactions.__main__(
     species_id=args_dict['organism_id'],
     output_dir=args_dict['output'],
     database_source='biomodels/bigg',
-    sbml_url=os.path.abspath(os.path.join(
-        ".", "metaboverse_cli", "curate", "test", "BMID000000141967_url.xml")),
+    sbml_url=os.path.join("..", "metaboverse_cli", "curate", "test", "BMID000000141967_url.xml"),
     args_dict=args_dict)
 
 if 'All' in pathway_database:

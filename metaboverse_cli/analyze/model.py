@@ -52,34 +52,27 @@ try:
     from utils import progress_feed, track_progress, get_metaboverse_cli_version
 except:
     import importlib.util
-    module_path = os.path.abspath(
-        os.path.join(".", "metaboverse_cli", "analyze", "collapse.py"
-                     ))
+    module_path =  os.path.join("..", "metaboverse_cli", "analyze", "collapse.py"  )
     spec = importlib.util.spec_from_file_location("", module_path)
     collapse = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(collapse)
     collapse_nodes = collapse.collapse_nodes
     generate_updated_dictionary = collapse.generate_updated_dictionary
 
-    module_path = os.path.abspath(
-        os.path.join(".", "metaboverse_cli", "analyze", "mpl_colormaps.py"
-                     ))
+    module_path =  os.path.join("..", "metaboverse_cli", "analyze", "mpl_colormaps.py"  )
     spec = importlib.util.spec_from_file_location("", module_path)
     mpl_colormaps = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(mpl_colormaps)
     get_mpl_colormap = mpl_colormaps.get_mpl_colormap
 
-    module_path = os.path.abspath(
-        os.path.join(".", "metaboverse_cli", "analyze", "utils.py"
-                     ))
+    module_path = os.path.join("..", "metaboverse_cli", "analyze", "utils.py" )
     spec = importlib.util.spec_from_file_location("", module_path)
     analyze_utils = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(analyze_utils)
     convert_rgba = analyze_utils.convert_rgba
     remove_defective_reactions = analyze_utils.remove_defective_reactions
 
-    module_path = os.path.abspath(
-        os.path.join(".", "metaboverse_cli", "utils.py"))
+    module_path = os.path.join("..", "metaboverse_cli", "utils.py"))
     spec = importlib.util.spec_from_file_location("", module_path)
     utils = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(utils)

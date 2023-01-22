@@ -33,20 +33,18 @@ import pickle
 import os
 
 spec = importlib.util.spec_from_file_location(
-    "__main__", os.path.abspath("./metaboverse_cli/mapper/__main__.py"))
+    "__main__", "../metaboverse_cli/mapper/__main__.py")
 mapper = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(mapper)
 
 # Run
 args_dict = {
-    'output': os.path.abspath(
-        os.path.join(".", "metaboverse_cli", "mapper", "test")) + os.path.sep}
+    'output': os.path.join("..", "metaboverse_cli", "mapper", "test")) + os.path.sep}
 mapper.__main__(
     args_dict)
 
 # Check
-mapper_url = os.path.abspath(
-    os.path.join(".", "metaboverse_cli", "mapper", "test", "metabolite_mapping.pickle"))
+mapper_url = os.path.join("..", "metaboverse_cli", "mapper", "test", "metabolite_mapping.pickle"))
 with open(mapper_url, 'rb') as mapper_file:
     mapper = pickle.load(mapper_file)
 
@@ -67,7 +65,6 @@ assert type(mapper['mapping_dictionary'][key2]
 
 # Clean
 os.remove(
-    os.path.abspath(
-        os.path.join(".", "metaboverse_cli", "mapper", "test", "metabolite_mapping.pickle")))
+        os.path.join("..", "metaboverse_cli", "mapper", "test", "metabolite_mapping.pickle")))
 
 print('Tests completed')

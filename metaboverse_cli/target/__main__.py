@@ -41,19 +41,19 @@ except:
     import os
     import importlib.util
     spec = importlib.util.spec_from_file_location(
-        "__main__", os.path.abspath("./metaboverse_cli/target/build.py"))
+        "__main__", "../metaboverse_cli/target/build.py")
     build = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(build)
     build = build.__main__
 
     spec = importlib.util.spec_from_file_location(
-        "", os.path.abspath("./metaboverse_cli/target/utils.py"))
+        "", "../metaboverse_cli/target/utils.py")
     build_utils = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(build_utils)
     import_midas = build_utils.import_midas
 
     spec = importlib.util.spec_from_file_location(
-        "", os.path.abspath("./metaboverse_cli/utils.py"))
+        "", "../metaboverse_cli/utils.py")
     utils = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(utils)
     progress_feed = utils.progress_feed

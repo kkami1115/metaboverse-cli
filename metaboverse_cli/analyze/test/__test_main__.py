@@ -40,7 +40,7 @@ import os
 # Run full test on data
 print("Testing analyze/__main__.py for modeling data")
 spec = importlib.util.spec_from_file_location(
-    "", os.path.abspath("./metaboverse_cli/analyze/__main__.py"))
+    "", "../metaboverse_cli/analyze/__main__.py")
 __main__ = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(__main__)
 test_modeling = __main__.__main__
@@ -49,15 +49,11 @@ args_dict = {
     'database_source': 'reactome',
     'curation': 'HSA.mvdb',
     'organism_id': 'HSA',
-    'transcriptomics': os.path.abspath(
-        './metaboverse_cli/analyze/test/rna_mapping_test.txt'),
+    'transcriptomics': '../metaboverse_cli/analyze/test/rna_mapping_test.txt',
     'proteomics': 'none',
-    'metabolomics': os.path.abspath(
-        './metaboverse_cli/analyze/test/metabolite_mapping_test.txt'),
-    'output': os.path.abspath(
-        './metaboverse_cli/analyze/test'),
-    'output_file': os.path.abspath(
-        './metaboverse_cli/analyze/test/HSA_test.mvrs'),
+    'metabolomics': '../metaboverse_cli/analyze/test/metabolite_mapping_test.txt',
+    'output': '../metaboverse_cli/analyze/test',
+    'output_file': '../metaboverse_cli/analyze/test/HSA_test.mvrs',
     'collapse_with_modifiers': False,
     'broadcast_genes': True,
     'labels': '0',
@@ -65,45 +61,36 @@ args_dict = {
     'organism_curation_file': 'None',
     'force_new_curation': True,
     'collapse_threshold': 0.4,
-    'session_data': os.path.abspath(
-        './metaboverse_cli/analyze/test/session_data.txt'),
+    'session_data': '../metaboverse_cli/analyze/test/session_data.txt',
 }
 
-zipped_net = os.path.abspath(
-    './metaboverse_cli/analyze/test/HSA.zip')
+zipped_net = '../metaboverse_cli/analyze/test/HSA.zip'
 with zipfile.ZipFile(zipped_net, 'r') as zip_file:
     zip_file.extractall(
-        os.path.abspath(
-            './metaboverse_cli/analyze/test'))
+            '../metaboverse_cli/analyze/test')
 
-network_url = os.path.abspath(
-    "./metaboverse_cli/analyze/test/HSA.mvdb")
+network_url =  "../metaboverse_cli/analyze/test/HSA.mvdb"
 with open(network_url, 'rb') as network_file:
     network = pickle.load(network_file)
 
 test_modeling(args_dict)
 
-rna_unmapped = os.path.abspath(
-    './metaboverse_cli/analyze/test/rna_mapping_test_unmapped.txt'
-)
+rna_unmapped =  '../metaboverse_cli/analyze/test/rna_mapping_test_unmapped.txt'
+
 rna = pd.read_csv(rna_unmapped, sep='\t', index_col=0)
 assert len(rna.index.tolist()) == 7028, 'RNA mapping experienced error'
 os.remove(rna_unmapped)
 
-metabolite_unmapped = os.path.abspath(
-    './metaboverse_cli/analyze/test/metabolite_mapping_test_unmapped.txt'
-)
+metabolite_unmapped = '../metaboverse_cli/analyze/test/metabolite_mapping_test_unmapped.txt'
+
 met = pd.read_csv(metabolite_unmapped, sep='\t', index_col=0)
 assert met.index.tolist() == ['bMethyl.2.oxovalerate', 'DSS',
                               'Phenylacetylglycine'], 'Metabolite mapping experienced error'
 os.remove(metabolite_unmapped)
 
 os.remove(args_dict['output_file'])
-os.remove(os.path.abspath(
-    './metaboverse_cli/analyze/test/HSA.mvdb'))
-os.remove(os.path.abspath(
-    './metaboverse_cli/analyze/test/HSA.nbdb'))
-os.remove(os.path.abspath(
-    './metaboverse_cli/analyze/test/HSA_template.mvrs'))
+os.remove('../metaboverse_cli/analyze/test/HSA.mvdb')
+os.remove('../metaboverse_cli/analyze/test/HSA.nbdb')
+os.remove('../metaboverse_cli/analyze/test/HSA_template.mvrs')
 
 print('Tests completed')

@@ -43,7 +43,7 @@ try:
 except:
     import importlib.util
     spec = importlib.util.spec_from_file_location(
-        "", os.path.abspath("./metaboverse_cli/utils.py"))
+        "", "../metaboverse_cli/utils.py")
     utils = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(utils)
     prepare_output = utils.prepare_output

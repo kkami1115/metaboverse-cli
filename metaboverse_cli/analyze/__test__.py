@@ -41,7 +41,7 @@ import os
 """
 print("Testing prepare_data.py")
 spec = importlib.util.spec_from_file_location(
-    "", os.path.abspath("./metaboverse_cli/analyze/prepare_data.py"))
+    "","../metaboverse_cli/analyze/prepare_data.py")
 prepare_data = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(prepare_data)
 read_data = prepare_data.read_data
@@ -53,24 +53,17 @@ copy_columns = prepare_data.copy_columns
 catenate_data = prepare_data.catenate_data
 __main__ = prepare_data.__main__
 
-zipped_net = os.path.abspath(
-    './metaboverse_cli/analyze/test/HSA.zip')
+zipped_net = '../metaboverse_cli/analyze/test/HSA.zip'
 with zipfile.ZipFile(zipped_net, 'r') as zip_file:
-    zip_file.extractall(
-        os.path.abspath(
-            './metaboverse_cli/analyze/test'))
+    zip_file.extractall('../metaboverse_cli/analyze/test')
 
-network_url = os.path.abspath(
-    "./metaboverse_cli/analyze/test/HSA.mvdb")
+network_url = "../metaboverse_cli/analyze/test/HSA.mvdb"
 with open(network_url, 'rb') as network_file:
     network = pickle.load(network_file)
 
-transcriptomics_url = os.path.abspath(
-    "./metaboverse_cli/analyze/test/transcriptomics.txt")
-proteomics_url = os.path.abspath(
-    "./metaboverse_cli/analyze/test/proteomics.txt")
-metabolomics_url = os.path.abspath(
-    "./metaboverse_cli/analyze/test/metabolomics.txt")
+transcriptomics_url = "../metaboverse_cli/analyze/test/transcriptomics.txt"
+proteomics_url = "../metaboverse_cli/analyze/test/proteomics.txt"
+metabolomics_url =  "../metaboverse_cli/analyze/test/metabolomics.txt"
 
 # read_data()
 print("Testing read_data()")
@@ -172,7 +165,7 @@ except KeyError:
 """
 print("Testing utils.py")
 spec = importlib.util.spec_from_file_location(
-    "", os.path.abspath("./metaboverse_cli/analyze/utils.py"))
+    "","../metaboverse_cli/analyze/utils.py")
 utils = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(utils)
 file_path = utils.file_path
@@ -182,7 +175,7 @@ convert_rgba = utils.convert_rgba
 
 # file_path()
 print("Testing file_path()")
-file = "./metaboverse_cli/analyze/utils.py"
+file = "../metaboverse_cli/analyze/utils.py"
 assert file_path(file) == os.path.abspath(file), 'file_path() failed'
 
 # check_suffix()
@@ -210,7 +203,7 @@ assert convert_rgba(color2) == [(255, 255, 255, 1)], 'convert_rgba() failed'
 """
 print("Testing model.py")
 spec = importlib.util.spec_from_file_location(
-    "", os.path.abspath("./metaboverse_cli/analyze/model.py"))
+    "","../metaboverse_cli/analyze/model.py"))
 model = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(model)
 name_graph = model.name_graph
@@ -323,9 +316,9 @@ net_test = {
 }
 
 test_args = {
-    'output': os.path.abspath("./metaboverse_cli/analyze/test"),
+    'output':"../metaboverse_cli/analyze/test"),
     'output_file': "test.mvrs",
-    'bad_output_file': os.path.abspath("./metaboverse_cli/analyze/test/"),
+    'bad_output_file':"../metaboverse_cli/analyze/test/"),
     'organism_id': "HSA",
     'network': network_url
 }
@@ -730,7 +723,7 @@ assert list(mapper.keys()) == ['hmdb_dictionary', 'display_dictionary',
 """
 print("Testing collapse.py")
 spec = importlib.util.spec_from_file_location(
-    "", os.path.abspath("./metaboverse_cli/analyze/collapse.py"))
+    "","../metaboverse_cli/analyze/collapse.py"))
 collapse = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(collapse)
 generate_updated_dictionary = collapse.generate_updated_dictionary
@@ -1133,7 +1126,7 @@ assert list(updated_rxns2.keys()
 # collapse_nodes() for partial collapse
 print('Testing collapse_nodes() for partial collapse...')
 spec = importlib.util.spec_from_file_location(
-    "", os.path.abspath("./metaboverse_cli/analyze/collapse.py"))
+    "","../metaboverse_cli/analyze/collapse.py"))
 collapse = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(collapse)
 generate_updated_dictionary = collapse.generate_updated_dictionary

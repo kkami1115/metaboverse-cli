@@ -44,19 +44,19 @@ try:
 except:
     import importlib.util
     spec = importlib.util.spec_from_file_location(
-        "__main__", os.path.abspath("./metaboverse_cli/curate/load_reactions_db.py"))
+        "__main__", "../metaboverse_cli/curate/load_reactions_db.py")
     load_reactions = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(load_reactions)
     load_reactions = load_reactions.__main__
 
     spec = importlib.util.spec_from_file_location(
-        "__main__", os.path.abspath("./metaboverse_cli/curate/load_complexes_db.py"))
+        "__main__", "../metaboverse_cli/curate/load_complexes_db.py")
     load_complexes = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(load_complexes)
     load_complexes = load_complexes.__main__
 
     spec = importlib.util.spec_from_file_location(
-        "", os.path.abspath("./metaboverse_cli/utils.py"))
+        "", "../metaboverse_cli/utils.py")
     utils = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(utils)
     progress_feed = utils.progress_feed

@@ -40,26 +40,22 @@ import os
 
 print("Testing prepare_data.py")
 spec = importlib.util.spec_from_file_location(
-    "", os.path.abspath("./metaboverse_cli/analyze/prepare_data.py"))
+    "", "../metaboverse_cli/analyze/prepare_data.py")
 prepare_data = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(prepare_data)
 
-zipped_net = os.path.abspath(
-    './metaboverse_cli/analyze/test/HSA.zip')
+zipped_net = '../metaboverse_cli/analyze/test/HSA.zip'
 with zipfile.ZipFile(zipped_net, 'r') as zip_file:
     zip_file.extractall(
-        os.path.abspath(
-            './metaboverse_cli/analyze/test'))
+            '../metaboverse_cli/analyze/test')
 
-network_url = os.path.abspath(
-    "./metaboverse_cli/analyze/test/HSA.mvdb")
+network_url = "../metaboverse_cli/analyze/test/HSA.mvdb"
 with open(network_url, 'rb') as network_file:
     network = pickle.load(network_file)
 
 # CHEBI mapping
 print('Testing analyze/__main__.py for CHEBI mapping...')
-metabolomics_url = os.path.abspath(
-    "./metaboverse_cli/analyze/test/mixed_chebi_ids.txt")
+metabolomics_url = "../metaboverse_cli/analyze/test/mixed_chebi_ids.txt"
 __main__ = prepare_data.__main__
 data, stats, unmapped = __main__(
     network=network,
@@ -86,10 +82,8 @@ args_chebi = {
     'transcriptomics': 'None',
     'proteomics': 'none',
     'metabolomics': metabolomics_url,
-    'output': os.path.abspath(
-        './metaboverse_cli/analyze/test'),
-    'output_file': os.path.abspath(
-        './metaboverse_cli/analyze/test/HSA_test.mvrs'),
+    'output': '../metaboverse_cli/analyze/test',
+    'output_file': '../metaboverse_cli/analyze/test/HSA_test.mvrs',
     'collapse_with_modifiers': False,
     'broadcast_genes': True,
     'broadcast_metabolites': True,
@@ -97,11 +91,10 @@ args_chebi = {
     'blocklist': '',
     'force_new_curation': True,
     'collapse_threshold': 0.5,
-    'session_data': os.path.abspath(
-        './metaboverse_cli/analyze/test/session_data.txt'),
+    'session_data': '../metaboverse_cli/analyze/test/session_data.txt',
 }
 spec = importlib.util.spec_from_file_location(
-    "", os.path.abspath("./metaboverse_cli/analyze/__main__.py"))
+    "", "../metaboverse_cli/analyze/__main__.py")
 __main__ = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(__main__)
 test_modeling = __main__.__main__
@@ -133,11 +126,8 @@ for n in chebi_json['nodes']:
         assert n['values'] == [-0.000150599], "Mixed CHEBI mapping failed"
 
 os.remove(args_chebi['output_file'])
-os.remove(os.path.abspath(
-    './metaboverse_cli/analyze/test/HSA.mvdb'))
-os.remove(os.path.abspath(
-    './metaboverse_cli/analyze/test/HSA.nbdb'))
-os.remove(os.path.abspath(
-    './metaboverse_cli/analyze/test/HSA_template.mvrs'))
+os.remove('../metaboverse_cli/analyze/test/HSA.mvdb')
+os.remove('../metaboverse_cli/analyze/test/HSA.nbdb')
+os.remove('../metaboverse_cli/analyze/test/HSA_template.mvrs')
 
 print('Tests completed')

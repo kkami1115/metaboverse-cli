@@ -47,7 +47,7 @@ try:
 except:
     import importlib.util
     spec = importlib.util.spec_from_file_location(
-        "", os.path.abspath("./metaboverse_cli/utils.py"))
+        "", "../metaboverse_cli/utils.py")
     utils = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(utils)
     progress_feed = utils.progress_feed
@@ -139,10 +139,10 @@ def get_pathways(
         raise Exception(pathways_dir, 'does not exist')
 
     # Clean up path
-    if os.path.abspath(pathways_dir).endswith(os.path.sep):
-        dir = os.path.abspath(pathways_dir)
+    if pathways_dir.endswith(os.path.sep):
+        dir = pathways_dir
     else:
-        dir = os.path.abspath(pathways_dir) + os.path.sep
+        dir = pathways_dir + os.path.sep
 
     # Get list of files and their reaction name
     file_list = os.listdir(dir)

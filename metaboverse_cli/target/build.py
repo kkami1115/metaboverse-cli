@@ -47,9 +47,7 @@ try:
     from utils import progress_feed
 except:
     import importlib.util
-    module_path = os.path.abspath(
-        os.path.join(".", "metaboverse_cli", "analyze", "model.py"
-                     ))
+    module_path = os.path.join("..", "metaboverse_cli", "analyze", "model.py" )
     spec = importlib.util.spec_from_file_location("", module_path)
     model = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(model)
@@ -61,9 +59,7 @@ except:
     name_graph = model.name_graph
     compile_node_degrees = model.compile_node_degrees
 
-    module_path = os.path.abspath(
-        os.path.join(".", "metaboverse_cli", "utils.py"
-                     ))
+    module_path = os.path.join("..", "metaboverse_cli", "utils.py" )
     spec = importlib.util.spec_from_file_location("progress_feed", module_path)
     progress_feed = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(progress_feed)
@@ -327,7 +323,7 @@ def test():
     import os
     import importlib.util
     spec = importlib.util.spec_from_file_location(
-        "", os.path.abspath("./metaboverse_cli/utils.py"))
+        "", "../metaboverse_cli/utils.py")
     utils = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(utils)
     read_network = utils.read_network
@@ -335,7 +331,7 @@ def test():
         network_url='C:\\Users\\jorda\\Desktop\\HSA.mvdb')
 
     spec = importlib.util.spec_from_file_location(
-        "", os.path.abspath("./metaboverse_cli/target/utils.py"))
+        "", "../metaboverse_cli/target/utils.py")
     build_utils = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(build_utils)
     import_midas = build_utils.import_midas
@@ -343,7 +339,7 @@ def test():
         filename='C:\\Users\\jorda\\Desktop\\projects\\Electrum\\_data\\MIDAS-latest.txt')
 
     spec = importlib.util.spec_from_file_location(
-        "", os.path.abspath("./metaboverse_cli/analyze/model.py"))
+        "", "../metaboverse_cli/analyze/model.py")
     model = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(model)
     gather_synonyms = model.gather_synonyms
