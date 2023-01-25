@@ -203,7 +203,7 @@ assert convert_rgba(color2) == [(255, 255, 255, 1)], 'convert_rgba() failed'
 """
 print("Testing model.py")
 spec = importlib.util.spec_from_file_location(
-    "","../metaboverse_cli/analyze/model.py"))
+    "","../metaboverse_cli/analyze/model.py")
 model = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(model)
 name_graph = model.name_graph
@@ -316,9 +316,9 @@ net_test = {
 }
 
 test_args = {
-    'output':"../metaboverse_cli/analyze/test"),
+    'output':"../metaboverse_cli/analyze/test",
     'output_file': "test.mvrs",
-    'bad_output_file':"../metaboverse_cli/analyze/test/"),
+    'bad_output_file':"../metaboverse_cli/analyze/test/",
     'organism_id': "HSA",
     'network': network_url
 }
@@ -723,7 +723,7 @@ assert list(mapper.keys()) == ['hmdb_dictionary', 'display_dictionary',
 """
 print("Testing collapse.py")
 spec = importlib.util.spec_from_file_location(
-    "","../metaboverse_cli/analyze/collapse.py"))
+    "","../metaboverse_cli/analyze/collapse.py")
 collapse = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(collapse)
 generate_updated_dictionary = collapse.generate_updated_dictionary
@@ -1126,7 +1126,7 @@ assert list(updated_rxns2.keys()
 # collapse_nodes() for partial collapse
 print('Testing collapse_nodes() for partial collapse...')
 spec = importlib.util.spec_from_file_location(
-    "","../metaboverse_cli/analyze/collapse.py"))
+    "","../metaboverse_cli/analyze/collapse.py")
 collapse = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(collapse)
 generate_updated_dictionary = collapse.generate_updated_dictionary

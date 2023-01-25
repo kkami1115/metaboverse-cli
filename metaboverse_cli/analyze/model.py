@@ -72,7 +72,7 @@ except:
     convert_rgba = analyze_utils.convert_rgba
     remove_defective_reactions = analyze_utils.remove_defective_reactions
 
-    module_path = os.path.join("..", "metaboverse_cli", "utils.py"))
+    module_path = os.path.join("..", "metaboverse_cli", "utils.py")
     spec = importlib.util.spec_from_file_location("", module_path)
     utils = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(utils)

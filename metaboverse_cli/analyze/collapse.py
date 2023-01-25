@@ -38,13 +38,13 @@ except:
     import os
     import importlib.util
     spec = importlib.util.spec_from_file_location(
-        "", os.path.join("..", "metaboverse_cli", "utils.py")))
+        "", os.path.join("..", "metaboverse_cli", "utils.py"))
     utils = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(utils)
     track_progress = utils.track_progress
 
     spec = importlib.util.spec_from_file_location(
-        "convert_rgba","../metaboverse_cli/analyze/utils.py"))
+        "convert_rgba","../metaboverse_cli/analyze/utils.py")
     convert_rgba = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(convert_rgba)
     convert_rgba = convert_rgba.convert_rgba

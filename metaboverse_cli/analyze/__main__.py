@@ -50,13 +50,13 @@ try:
 except:
     import importlib.util
     spec = importlib.util.spec_from_file_location(
-        "", "../metaboverse_cli/analyze/prepare_data.py"))
+        "", "../metaboverse_cli/analyze/prepare_data.py")
     prepare_data = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(prepare_data)
     prepare_data = prepare_data.__main__
 
     spec = importlib.util.spec_from_file_location(
-        "","../metaboverse_cli/analyze/model.py"))
+        "","../metaboverse_cli/analyze/model.py")
     model = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(model)
     __template__ = model.__template__
@@ -71,7 +71,7 @@ except:
     remove_defective_reactions = analyze_utils.remove_defective_reactions
 
     spec = importlib.util.spec_from_file_location(
-        "","../metaboverse_cli/utils.py"))
+        "","../metaboverse_cli/utils.py")
     utils = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(utils)
     progress_feed = utils.progress_feed

@@ -1,13 +1,13 @@
 #install.packages("pacman")
 pacman::p_load(reticulate)
 
-#pd <- reticulate::import("pandas")
-#numpy < - reticulate::import("numpy")
-#scipy <- reticulate::import("scipy")
-#sklearn <- reticulate::import("scikit-learn")
-#networkx <- reticulate::import("networkx")
-#requests < - reticulate::import("requests")
-#certifi <- reticulate::import("certifi")
+reticulate::import("pandas")
+reticulate::import("numpy")
+reticulate::import("scipy")
+reticulate::import("sklearn")
+reticulate::import("networkx")
+reticulate::import("requests")
+reticulate::import("certifi")
 
 
 # curate folder
@@ -22,7 +22,7 @@ reticulate::source_python("../metaboverse_cli/curate/utils.py")
 # analyze folder
 reticulate::source_python("../metaboverse_cli/analyze/__init__.py")
 reticulate::source_python("../metaboverse_cli/analyze/__main__.py")
-reticulate::source_python("../metaboverse_cli/analyze/__test__.py")
+#reticulate::source_python("../metaboverse_cli/analyze/__test__.py")
 reticulate::source_python("../metaboverse_cli/analyze/collapse.py")
 reticulate::source_python("../metaboverse_cli/analyze/model.py")
 reticulate::source_python("../metaboverse_cli/analyze/mpl_colormaps.py")
