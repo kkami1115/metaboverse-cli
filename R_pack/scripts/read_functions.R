@@ -38,5 +38,11 @@ reticulate::source_python("../metaboverse_cli/target/build.py")
 reticulate::source_python("../metaboverse_cli/target/utils.py")
 
 
+# mapper folder
+reticulate::source_python("../metaboverse_cli/mapper/__init__.py")
+reticulate::source_python("../metaboverse_cli/mapper/__main__.py")
+#reticulate::source_python("../metaboverse_cli/mapper/__test__.py")
+
+
 
 
