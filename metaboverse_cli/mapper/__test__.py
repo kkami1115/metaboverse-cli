@@ -39,12 +39,12 @@ spec.loader.exec_module(mapper)
 
 # Run
 args_dict = {
-    'output': os.path.join("..", "metaboverse_cli", "mapper", "test")) + os.path.sep}
+    'output': os.path.join("..", "metaboverse_cli", "mapper", "test") + os.path.sep}
 mapper.__main__(
     args_dict)
 
 # Check
-mapper_url = os.path.join("..", "metaboverse_cli", "mapper", "test", "metabolite_mapping.pickle"))
+mapper_url = os.path.join("..", "metaboverse_cli", "mapper", "test", "metabolite_mapping.pickle")
 with open(mapper_url, 'rb') as mapper_file:
     mapper = pickle.load(mapper_file)
 
@@ -64,7 +64,5 @@ assert type(mapper['mapping_dictionary'][key2]
             ) == str, 'Mapping dictionary improperly formatted'
 
 # Clean
-os.remove(
-        os.path.join("..", "metaboverse_cli", "mapper", "test", "metabolite_mapping.pickle")))
-
+os.remove(os.path.join("..", "metaboverse_cli", "mapper", "test", "metabolite_mapping.pickle"))
 print('Tests completed')
