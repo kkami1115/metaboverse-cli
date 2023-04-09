@@ -9,12 +9,12 @@ pacman::p_load(tidyverse, fs, reticulate)
   complex_participants = get_table(
     output_dir=curate_output_dir,
     url='https://reactome.org/download/current/ComplexParticipantsPubMedIdentifiers_human.txt',
-    column_names=0)
+    column_names=r_to_py(NULL))
 
   complex_pathway = get_table(
     output_dir=curate_output_dir,
     url='https://reactome.org/download/current/Complex_2_Pathway_human.txt',
-    column_names=0)
+    column_names=r_to_py(NULL))
 
 
 # load_reactions_db.py
